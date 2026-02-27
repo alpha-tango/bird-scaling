@@ -10,7 +10,7 @@ def tick_settings(ax):
 def main():
     
     # quartile plots
-    counts_and_areas = pd.read_csv('figures/inputs/areas_and_counts.csv')
+    counts_and_areas = pd.read_csv('figures/inputs/areas_and_counts_2024.csv')
 
     groupings = [50,100,500,1000]
     # groupings = []
@@ -49,37 +49,26 @@ def main():
         plt.savefig(f'figures/outputs/boxplot_by_{n}.png')
         plt.close()
 
-        # species count - violinplot
+        # observer counts - boxplot
         fig, ax = plt.subplots()
-        ax.violinplot(species_count_y, positions=x, side='both', showmedians=True, points=1000)
-        ax.set_yscale('log')
-        tick_settings(ax)
-        ax.set_title(f"Island species counts at median area of {n} islands grouped")
-        ax.set_xlabel(r"$log_{10}$ Island Area")
-        ax.set_ylabel(r"$log_{10}$ Species Count")
-        plt.savefig(f'figures/outputs/violinplot_by_{n}.png')
-        plt.close()
-
-        # observer counts - violinplot
-        fig, ax = plt.subplots()
-        ax.violinplot(species_count_y, positions=x, side='both', showmedians=True, points=1000)
+        ax.boxplot(observer_count_y, positions=x, widths=0.20, showfliers=False)
         ax.set_yscale('log')
         tick_settings(ax)
         ax.set_title(f"Island observer counts at median area of {n} islands grouped")
         ax.set_xlabel(r"$log_{10}$ Island Area")
         ax.set_ylabel(r"$log_{10}$ Observer Count")
-        plt.savefig(f'figures/outputs/observer_violinplot_by_{n}.png')
+        plt.savefig(f'figures/outputs/observer_boxplot_by_{n}.png')
         plt.close()
 
-        # checklist counts - violinplot
+        # checklist counts - boxplot
         fig, ax = plt.subplots()
-        ax.violinplot(species_count_y, positions=x, side='both', showmedians=True, points=1000)
+        ax.boxplot(checklist_count_y, positions=x, widths=0.20, showfliers=False)
         ax.set_yscale('log')
         tick_settings(ax)
         ax.set_title(f"Island checklist counts at median area of {n} islands grouped")
         ax.set_xlabel(r"$log_{10}$ Island Area")
         ax.set_ylabel(r"$log_{10}$ Checklist Count")
-        plt.savefig(f'figures/outputs/checklist_violinplot_by_{n}.png')
+        plt.savefig(f'figures/outputs/checklist_boxplot_by_{n}.png')
         plt.close()
         
     return 0
