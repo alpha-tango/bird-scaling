@@ -15,7 +15,7 @@ def main():
     # quartile plots
     counts_and_areas = pd.read_csv('figures/inputs/areas_and_counts_2024.csv')
 
-    if True:
+    if False:
         n = 1000
         column = f'rank_group_{n}'
         groups = counts_and_areas[column].unique()
@@ -115,7 +115,7 @@ def main():
 
             # ax.set_yscale('log')
         tick_settings_1000(ax)
-        ax.set_title(f"Island species counts at median area of 500 islands grouped")
+        ax.set_title(f"Scaling function within groups of 500 islands is approximately normal")
         ax.set_xlabel(r"$log_{10}$ Island Area")
         ax.set_ylabel(r"$log_{10}$ Species Count")
         plt.savefig('figures/outputs/custom_violinplots_by_500.png')
